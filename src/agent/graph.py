@@ -1,13 +1,13 @@
-import os
+# import os
 
 # Import the load_dotenv function
 from dotenv import load_dotenv
+from langgraph.graph import StateGraph, START, END, MessagesState
+from langchain_openai import ChatOpenAI
 
 load_dotenv()
 
-from langgraph.graph import StateGraph, START, END, MessagesState
 
-from langchain_openai import ChatOpenAI
 
 llm = ChatOpenAI(model="gpt-4o", temperature=0.0)
 
@@ -15,9 +15,11 @@ llm = ChatOpenAI(model="gpt-4o", temperature=0.0)
 class State(MessagesState):
     pass
 
+
 def assistant(state: State):
     response = llm.invoke(state["messages"])
     return {"messages": response}
+
 
 workflow = StateGraph(State)
 
