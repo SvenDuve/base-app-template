@@ -17,6 +17,10 @@ cd my-new-app
 poetry install
 ```
 
-## License
+## Start with langgraph dev
 
-MIT
+Make sure there are no conflicting python environments
+
+```bash
+poetry run langgraph dev
+```
